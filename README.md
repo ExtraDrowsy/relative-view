@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/JYSWDV/relative-view.svg?branch=master)](https://travis-ci.com/JYSWDV/relative-view)
 # relative-view
 `relative-view` is a `UIKit` extension for `UIView` providing methods/operations dedicated to finding other `UIViews` relatively. The goal of this framework is to provide a framework where:
 - Users are allowed to find and group other `UIViews` in any manner they wish.
