@@ -69,9 +69,11 @@ extension UIView {
             (descendant: UIView) -> Bool in
             if let key: Type = groupKey(descendant) {
                 // If a non-nil key is returned the traversed descendant must be grouped by it.
-                var descendants: [UIView] = groups[key] ?? []
-                descendants.append(descendant)
-                groups[key] = descendants
+                if groups[key] != nil {
+                    groups[key]!.append(descendant)
+                } else {
+                    groups[key] = [descendant]
+                }
             }
             // Always traverse the next descendant.
             return true
@@ -108,10 +110,8 @@ extension UIView {
     public func groupDescendants(by tags: [Int]) -> [Int : [UIView]] {
         return groupDescendants() {
             (descendant: UIView) -> Int? in
-            for tag in tags {
-                if tag == descendant.tag {
-                    return tag
-                }
+            if tags.contains(descendant.tag) {
+                return descendant.tag
             }
             return nil
         }

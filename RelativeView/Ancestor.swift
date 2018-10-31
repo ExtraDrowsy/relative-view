@@ -47,12 +47,7 @@ extension UIView {
     public func findFirstAncestor(by tags: [Int]) -> UIView? {
         return findFirstAncestor() {
             (ancestor: UIView) -> Bool in
-            for tag in tags {
-                if tag == ancestor.tag {
-                    return true
-                }
-            }
-            return false
+            return tags.contains(ancestor.tag)
         }
     }
     
@@ -84,9 +79,11 @@ extension UIView {
         while let ancestor: UIView = currentAncestor {
             if let key: Type = groupKey(ancestor) {
                 // If a non-nil key is returned the ancestor must be grouped by it.
-                var ancestors: [UIView] = groups[key] ?? []
-                ancestors.append(ancestor)
-                groups[key] = ancestors
+                if groups[key] != nil {
+                    groups[key]!.append(ancestor)
+                } else {
+                    groups[key] = [ancestor]
+                }
             }
             // Move to the next ancestor.
             currentAncestor = ancestor.superview
@@ -121,10 +118,8 @@ extension UIView {
     public func groupAncestors(by tags: [Int]) -> [Int : [UIView]] {
         return groupAncestors() {
             (ancestor: UIView) -> Int? in
-            for tag in tags {
-                if tag == ancestor.tag {
-                    return tag
-                }
+            if tags.contains(ancestor.tag) {
+                return ancestor.tag
             }
             return nil
         }

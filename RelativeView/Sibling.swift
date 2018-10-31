@@ -55,9 +55,11 @@ extension UIView {
             
             if let key: Type = groupKey(sibling) {
                 // If a non-nil key is returned the traversed sibling must be grouped by it.
-                var siblings: [UIView] = groups[key] ?? []
-                siblings.append(sibling)
-                groups[key] = siblings
+                if groups[key] != nil {
+                    groups[key]!.append(sibling)
+                } else {
+                    groups[key] = [sibling]
+                }
             }
         }
         return groups
@@ -92,10 +94,8 @@ extension UIView {
     public func groupSiblings(by tags: [Int]) -> [Int : [UIView]] {
         return groupSiblings() {
             (sibling: UIView) -> Int? in
-            for tag in tags {
-                if tag == sibling.tag {
-                    return tag
-                }
+            if tags.contains(sibling.tag) {
+                return sibling.tag
             }
             return nil
         }
