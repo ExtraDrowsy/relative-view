@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/JYSWDV/relative-view.svg?branch=master)](https://travis-ci.com/JYSWDV/relative-view)
-[![Coverage Status](https://coveralls.io/repos/github/JYSWDV/relative-view/badge.svg?branch=master)](https://coveralls.io/github/JYSWDV/relative-view?branch=master)
+[![codecov](https://codecov.io/gh/JYSWDV/relative-view/branch/master/graph/badge.svg?token=YN19MFFGWY)](https://codecov.io/gh/JYSWDV/relative-view)
 # relative-view
 `relative-view` is a `UIKit` extension for `UIView` providing methods/operations dedicated to finding other `UIViews` relatively. The goal of this framework is to provide a framework where:
 - Users are allowed to find and group other `UIViews` in any manner they wish.

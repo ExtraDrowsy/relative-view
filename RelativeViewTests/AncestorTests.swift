@@ -194,7 +194,7 @@ class AncestorTests: XCTestCase {
         XCTAssertTrue(view.subviews.isEmpty)
         
         // Group the ancestors at view.
-        var ancestors: [String : [UIView]] = view.groupAncestors(by: [UIButton.self])
+        let ancestors: [String : [UIView]] = view.groupAncestors(by: [UIButton.self])
         
         // Make sure the two ancestors are found and they are in the correct order.
         let buttonKey: String = String(describing: UIButton.self)
@@ -292,7 +292,7 @@ class AncestorTests: XCTestCase {
         XCTAssertEqual(1, view.tag)
 
         // Group the ancestors at view.
-        var ancestors: [Int : [UIView]] = view.groupAncestors(by: [1])
+        let ancestors: [Int : [UIView]] = view.groupAncestors(by: [1])
         
         // Make sure the two ancestors are found and they are in the correct order.
         XCTAssertEqual(1, ancestors.count)

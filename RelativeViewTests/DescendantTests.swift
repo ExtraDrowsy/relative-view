@@ -272,7 +272,7 @@ class DescendantTests: XCTestCase {
         XCTAssertTrue(furthestDescendant.subviews.isEmpty)
         
         // Group the descendants starting at button.
-        var descendants: [String : [UIView]] = button.groupDescendants(by: [UIButton.self])
+        let descendants: [String : [UIView]] = button.groupDescendants(by: [UIButton.self])
         
         // Make sure the three descendants are found and they are in the correct order (based on depth-first traversal).
         let buttonKey: String = String(describing: UIButton.self)
@@ -388,7 +388,7 @@ class DescendantTests: XCTestCase {
         XCTAssertEqual(1, furthestDescendant.tag)
         
         // Group the descendants starting at button.
-        var descendants: [Int : [UIView]] = view.groupDescendants(by: [1])
+        let descendants: [Int : [UIView]] = view.groupDescendants(by: [1])
         
         // Make sure the three descendants are found and they are in the correct order (based on depth-first traversal).
         XCTAssertEqual(1, descendants.count)
